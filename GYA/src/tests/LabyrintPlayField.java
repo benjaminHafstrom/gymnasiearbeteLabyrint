@@ -18,6 +18,7 @@ public class LabyrintPlayField extends JPanel {
         System.out.println("Height - " + screenSize.height);
         System.out.println("Width - " + screenSize.width);
         JFrame frame = new JFrame();
+
         frame.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
         JPanel panel = new LabyrintPlayField();
         panel.setBackground(Color.LIGHT_GRAY);
@@ -35,10 +36,15 @@ public class LabyrintPlayField extends JPanel {
 
     }
 
+    public LabyrintPlayField() {
+        horisontellVäggEllerEj();
+        vertikalVäggEllerEj();
+    }
+
     public boolean[][] vertikalVäggEllerEj() {
         for (int i = 0; i < rutorPerRad; i++) {
             for (int j = 0; j < rutorPerRad; j++) {
-                int a = (int) Math.random()*2;
+                int a = (int) (Math.random()*2);
                 if (a==1) vertikalaVäggar[i][j] = true;
                 if (a==0) vertikalaVäggar[i][j] = false;
             }
@@ -47,7 +53,7 @@ public class LabyrintPlayField extends JPanel {
         return vertikalaVäggar;
     }
 
-    int a = 0;
+
     public boolean[][] horisontellVäggEllerEj() {
         for (int i = 0; i < rutorPerRad; i++) {
             for (int j = 0; j < rutorPerRad; j++) {
@@ -63,18 +69,17 @@ public class LabyrintPlayField extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.BLACK);
-        g.fillRect(0,0,längdSida,4);
         for (int j = 0; j < rutorPerRad; j++) {
             for (int k = 0; k < rutorPerRad; k++) {
                 if (horisontellaVäggar[j][k]==true) {
-                    g.fillRect( (rutorPerRad)*j,((rutorPerRad)*k)*längdSida,4,längdSida);
+                    g.fillRect( ((j)*längdSida),((k)*längdSida),4,längdSida);
                 }
             }
         }
         for (int j = 0; j < rutorPerRad; j++) {
             for (int k = 0; k < rutorPerRad; k++) {
                 if (vertikalaVäggar[j][k]==true) {
-                    g.fillRect( ((rutorPerRad)*j)*längdSida,((rutorPerRad)*k)*längdSida,4,längdSida);
+                    g.fillRect( ((j)*längdSida),((k)*längdSida),längdSida,4);
                 }
 
             }
