@@ -3,14 +3,12 @@ package tests;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.util.Random;
 
 
 public class LabyrintPlayField extends JPanel {
     private final int rutorPerRad = 16;
     private int längdSida = 640/rutorPerRad;
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private Random random;
     private boolean[][] vertikalaVäggar = new boolean[rutorPerRad][rutorPerRad];
     private boolean[][] horisontellaVäggar = new boolean[rutorPerRad][rutorPerRad];
 
